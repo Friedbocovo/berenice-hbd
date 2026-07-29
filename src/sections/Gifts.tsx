@@ -119,18 +119,7 @@ export function Gifts() {
     playPop()
 
     const item = config.cadeaux.items[i]
-    const isSpecial = (item as any).special
-    const colors = ['#ff7aa0', '#9d72ff', '#7dd3fc', '#f5c344', '#ffffff']
-    if (isSpecial) {
-      const end = Date.now() + 2000
-      const frame = () => {
-        confetti({ particleCount: 8, spread: 360, origin: { y: 0.5 }, colors, scalar: 1.2 })
-        if (Date.now() < end) requestAnimationFrame(frame)
-      }
-      frame()
-      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 }, colors })
-    } else {
-      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 }, colors })
+      const isSpecial = 'special' in item && item.special
     }
   }, [playPop])
 
@@ -225,7 +214,9 @@ export function Gifts() {
 
               {(() => {
                 const item = config.cadeaux.items[active]
-                const isSpecial = (item as any).special
+                const isSpecial = 'special' in item && item.special
+                const hasPhoto = 'photo' in item && item.photo
+                const hasContent = 'contenu' in item && item.contenu
                 return (
                   <>
                     <motion.div
@@ -237,21 +228,23 @@ export function Gifts() {
                       {isSpecial ? '🎁' : '✨'}
                     </motion.div>
                     <h3 className="font-display text-xl font-semibold text-lavande-700">{item.titre}</h3>
-                    {(item as any).photo && (
+                    {hasPhoto && (
                       <motion.img
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3 }}
-                        src={(item as any).photo}
+                        src={item.photo}
                         alt="Souvenir"
                         className="mx-auto mt-4 max-h-48 rounded-2xl object-cover shadow-lg"
                       />
                     )}
-                    <p className="mt-4 text-base leading-relaxed text-lavande-700/80">{item.contenu}</p>
+                    {hasContent && (
+                      <p className="mt-4 text-base leading-relaxed text-lavande-700/80">{item.contenu}</p>
+                    )}
 
                     {isSpecial && (
                       <button onClick={scrollToNext} className="btn-primary mt-6">
-                        {(item as any).bouton}
+                        {'bouton' in item ? item.bouton : config.cadeaux.boutonSuite}
                       </button>
                     )}
                   </>
