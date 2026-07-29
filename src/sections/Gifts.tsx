@@ -119,7 +119,18 @@ export function Gifts() {
     playPop()
 
     const item = config.cadeaux.items[i]
-      const isSpecial = 'special' in item && item.special
+    const isSpecial = 'special' in item && item.special
+    const colors = ['#ff7aa0', '#9d72ff', '#7dd3fc', '#f5c344', '#ffffff']
+    if (isSpecial) {
+      const end = Date.now() + 2000
+      const frame = () => {
+        confetti({ particleCount: 8, spread: 360, origin: { y: 0.5 }, colors, scalar: 1.2 })
+        if (Date.now() < end) requestAnimationFrame(frame)
+      }
+      frame()
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 }, colors })
+    } else {
+      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 }, colors })
     }
   }, [playPop])
 
