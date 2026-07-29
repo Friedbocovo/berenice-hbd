@@ -131,9 +131,9 @@ export const config = {
   video: {
     titre: 'Une petite vidéo pour toi',
     sousTit: 'Clique pour la découvrir',
-    // Remplacez par votre vidéo (mp4) dans /public/video/ ou un lien YouTube
-    src: '',
-    poster: 'https://images.pexels.com/photos/2873268/pexels-photo-2873268.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    // Vidéo et poster locaux depuis /public/video/
+    src: '/video/video.mp4',
+    poster: '/video/poster.jpeg',
   },
 
   // --- Quiz ---

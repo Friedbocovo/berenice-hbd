@@ -98,7 +98,7 @@ export function Guestbook() {
             </Reveal>
           )}
           {entries.map((entry) => (
-            <motion.div key={entry.id} variants={fadeUp} className="glass rounded-2xl p-5">
+            <motion.div key={entry.id} variants={fadeUp} initial="hidden" animate="show" className="glass rounded-2xl p-5">
               <div className="flex items-center justify-between">
                 <span className="font-display font-semibold text-lavande-700">{entry.name}</span>
                 <span className="text-xs text-lavande-400">

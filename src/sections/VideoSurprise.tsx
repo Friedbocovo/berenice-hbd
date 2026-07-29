@@ -1,12 +1,26 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Play, X } from 'lucide-react'
 import { config } from '@/config/content'
+import { useMusic } from '@/hooks/useMusic'
 import { Reveal, SectionTitle } from '@/components/motion'
 
 export function VideoSurprise() {
   const [open, setOpen] = useState(false)
+  const music = useMusic()
+  const wasPlayingRef = useRef(false)
   const v = config.video
+
+  useEffect(() => {
+    if (open) {
+      // When video opens, pause music and remember if it was playing
+      wasPlayingRef.current = music.playing
+      if (music.playing) music.pause()
+    } else {
+      // When video closes, resume music if it was playing before
+      if (wasPlayingRef.current) music.play()
+    }
+  }, [open]) // Only depend on 'open' to avoid loops
 
   return (
     <section className="section-shell">
@@ -23,7 +37,7 @@ export function VideoSurprise() {
             whileHover={{ scale: 1.1 }}
             className="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-rose-500 shadow-2xl"
           >
-            <Play className="ml-1" size={28} />
+            <Play size={28} />
           </motion.div>
           <div className="absolute bottom-6 left-6 text-white">
             <p className="font-display text-2xl font-semibold">▶ Lecture plein écran</p>
