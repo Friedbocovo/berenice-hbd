@@ -92,20 +92,20 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3"
+          className="fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 sm:gap-3"
         >
           {!isFirstSlide && (
             <button
               onClick={goPrev}
               aria-label="Précédent"
-              className="glass grid h-12 w-12 place-items-center rounded-full text-lavande-700 transition hover:scale-110 hover:text-rose-500 active:scale-95"
+              className="glass hidden h-12 w-12 place-items-center rounded-full text-lavande-700 transition hover:scale-110 hover:text-rose-500 active:scale-95 sm:grid"
             >
               <ArrowLeft size={20} />
             </button>
           )}
 
-          {/* Progress dots */}
-          <div className="glass flex items-center gap-1.5 rounded-full px-4 py-2.5">
+          {/* Progress dots - responsive */}
+          <div className="glass flex items-center gap-1 rounded-full px-2 py-2.5 sm:gap-1.5 sm:px-4">
             {SLIDES.map((s, i) => (
               <button
                 key={s.id}
@@ -116,8 +116,8 @@ export default function App() {
                 <span
                   className={`block rounded-full transition-all duration-300 ${
                     i + 1 === slide
-                      ? 'h-2.5 w-6 bg-gradient-to-r from-rose-400 to-lavande-400'
-                      : 'h-2 w-2 bg-lavande-300 hover:bg-rose-300'
+                      ? 'h-2 w-4 bg-gradient-to-r from-rose-400 to-lavande-400 sm:h-2.5 sm:w-6'
+                      : 'h-1.5 w-1.5 bg-lavande-300 hover:bg-rose-300 sm:h-2 sm:w-2'
                   }`}
                 />
               </button>
@@ -127,11 +127,17 @@ export default function App() {
           <button
             onClick={goNext}
             aria-label="Suivant"
-            data-nav-next="true"
-            className="glass group flex h-12 items-center gap-2 rounded-full px-6 text-lavande-700 transition hover:scale-105 hover:text-rose-500 active:scale-95"
+            className="glass group hidden h-12 items-center gap-2 rounded-full px-6 text-lavande-700 transition hover:scale-105 hover:text-rose-500 active:scale-95 sm:flex"
           >
             <span className="font-display text-sm font-medium">Suivant</span>
             <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+          </button>
+          <button
+            onClick={goNext}
+            aria-label="Suivant"
+            className="glass grid h-12 w-12 place-items-center rounded-full text-lavande-700 transition hover:scale-110 hover:text-rose-500 active:scale-95 sm:hidden"
+          >
+            <ArrowRight size={20} />
           </button>
         </motion.nav>
       )}

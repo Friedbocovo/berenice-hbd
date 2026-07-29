@@ -20,7 +20,7 @@ export function MusicPlayer({ playing, muted, volume, onToggle, onMute, onVolume
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 24 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="glass fixed bottom-5 right-5 z-40 flex items-center gap-3 rounded-full px-3 py-2.5 sm:bottom-6 sm:right-6"
+        className="glass fixed bottom-5 left-5 z-40 flex items-center gap-3 rounded-full px-3 py-2.5 sm:bottom-6 sm:left-6"
       >
         <button
           onClick={onToggle}

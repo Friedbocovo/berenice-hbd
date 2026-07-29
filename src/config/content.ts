@@ -79,7 +79,7 @@ export const config = {
     items: [
       { titre: 'Pour commencer...', contenu: 'Tu es une personne vraiment spéciale, et tu as beaucoup plus de qualités que tu ne le penses. ✨' },
       { titre: "Parce qu'un anniversaire sans rire, ce n'est pas un anniversaire. 😂", contenu: "Pourquoi les anniversaires sont-ils toujours si fatigants ? Parce qu'on passe une soirée à souffler ses bougies au lieu de souffler son stress ! 🎂💨" },
-      { titre: 'Un petit souvenir 📸', photo: 'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=800', contenu: 'Un instant figé pour toujours. 🌸' },
+      { titre: 'Un petit souvenir 📸', photo: '/souv.jpeg', contenu:  },
       { titre: 'Un petit mot pour toi 💌', contenu: 'Continue de sourire, de profiter de la vie et de rester exactement comme tu es. Les meilleures choses sont encore à venir. ✨' },
       { titre: '🎁 Celui-ci est spécial...', special: true, contenu: 'Tu pensais vraiment que c\'était terminé ? 😏', bouton: 'Continuer la surprise ✨' },
     ],
